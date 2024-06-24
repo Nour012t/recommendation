@@ -25,7 +25,10 @@ app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
 
-
+@app.get('/')
+def index():
+    return {'message': 'Hello '}
+    
 # 3. Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
 @app.post('/predict')
